@@ -1,0 +1,190 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+
+<!-- Form Section -->
+<center>
+<section class="logins py-5">
+    <div class="container py-xl-5 py-lg-3">
+        <div class="title-section mb-md-5 mb-4 d-flex justify-content-between align-items-center">
+			<h3 class="w3ls-title text-uppercase text-dark font-weight-bold mb-0">Add Heart Detail</h3>
+			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">
+				ℹ️
+			</button>
+		</div>
+		<hr/>
+        <div class="login px-sm-12" style="width:100%">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label>Age</label>
+                        <input type="text" class="form-control" name="age" required title="Age of the person in years.">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Sex</label>
+                        <input type="text" class="form-control" name="sex" required title="1 = Male, 0 = Female.">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Chest Pain</label>
+                        <input type="text" class="form-control" name="cp" required title="0 = Typical angina, 1 = Atypical angina, 2 = Non-anginal, 3 = Asymptomatic">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Resting BP</label>
+                        <input type="text" class="form-control" name="trestbps" required title="Resting blood pressure (mm Hg)">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Cholestrol</label>
+                        <input type="text" class="form-control" name="chole" required title="Serum cholesterol (mg/dl)">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Fasting BS</label>
+                        <input type="text" class="form-control" name="fbs" required title="Fasting blood sugar > 120 mg/dl: 1 = Yes, 0 = No">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label>ECG</label>
+                        <input type="text" class="form-control" name="restecg" required title="0 = Normal, 1 = ST-T abnormality, 2 = Left ventricular hypertrophy">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Max Heart Rate</label>
+                        <input type="text" class="form-control" name="thalach" required title="Maximum heart rate achieved during exercise.">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Exercise Induced</label>
+                        <input type="text" class="form-control" name="exang" required title="Exercise induced angina: 1 = Yes, 0 = No">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Oldpeak</label>
+                        <input type="text" class="form-control" name="old_peak" required title="ST depression induced by exercise relative to rest.">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Slope</label>
+                        <input type="text" class="form-control" name="slope" required title="0 = Upsloping, 1 = Flat, 2 = Downsloping">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Cardiac Arrest</label>
+                        <input type="text" class="form-control" name="ca" required title="Target: 1 = Has heart disease, 0 = No heart disease">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label>Thalassemia</label>
+                        <input type="text" class="form-control" name="thal" required title="1 = Normal, 2 = Fixed defect, 3 = Reversible defect">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn submit mt-4" style="background-color: #726f6e;">Send Heart data</button>
+            </form>
+        </div>
+    </div>
+</section>
+</center>
+
+<!-- Info Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Input Field Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+			<li><strong>Age</strong>  
+			  <br>📥 Enter age in years (e.g., 45)  
+			  <br>📏 Ask the patient or check ID records.
+			</li>
+		  
+			<li><strong>Sex</strong>  
+			  <br>📥 1 = Male, 0 = Female  
+			  <br>📏 Based on biological sex.
+			</li>
+		  
+			<li><strong>Chest Pain Type</strong>  
+			  <br>📥 0–3  
+			  <br>📏 Ask patient:
+			  <ul style="margin-left:15px">
+				<li>0: Typical (with exertion)</li>
+				<li>1: Atypical (not exertion-related)</li>
+				<li>2: Non-anginal</li>
+				<li>3: No pain</li>
+			  </ul>
+			</li>
+		  
+			<li><strong>Resting BP (trestbps)</strong>  
+			  <br>📥 Value in mm Hg (e.g., 130)  
+			  <br>📏 Use a BP machine when relaxed.
+			</li>
+		  
+			<li><strong>Cholesterol</strong>  
+			  <br>📥 mg/dL (e.g., 210)  
+			  <br>📏 Blood test at lab/clinic.
+			</li>
+		  
+			<li><strong>Fasting Blood Sugar (fbs)</strong>  
+			  <br>📥 1 if >120 mg/dL, else 0  
+			  <br>📏 Blood test after 8-hr fast.
+			</li>
+		  
+			<li><strong>ECG (restecg)</strong>  
+			  <br>📥 0–2  
+			  <br>📏 From ECG report:
+			  <ul style="margin-left:15px">
+				<li>0: Normal</li>
+				<li>1: ST-T abnormal</li>
+				<li>2: Left ventricular hypertrophy</li>
+			  </ul>
+			</li>
+		  
+			<li><strong>Max Heart Rate (thalach)</strong>  
+			  <br>📥 Max BPM during test (e.g., 160)  
+			  <br>📏 Measured during treadmill or stress test.
+			</li>
+		  
+			<li><strong>Exercise-Induced Angina (exang)</strong>  
+			  <br>📥 1 = Yes, 0 = No  
+			  <br>📏 Ask patient during physical test.
+			</li>
+		  
+			<li><strong>Oldpeak</strong>  
+			  <br>📥 Decimal (e.g., 2.3)  
+			  <br>📏 From stress ECG report.
+			</li>
+		  
+			<li><strong>Slope</strong>  
+			  <br>📥 0 = Upsloping, 1 = Flat, 2 = Downsloping  
+			  <br>📏 From ECG/stress test analysis.
+			</li>
+		  
+			<li><strong>Cardiac Arrest (ca)</strong>  
+			  <br>📥 1 = Yes, 0 = No  
+			  <br>📏 Based on doctor’s diagnosis/patient history.
+			</li>
+		  
+			<li><strong>Thalassemia (thal)</strong>  
+			  <br>📥 1 = Normal, 2 = Fixed, 3 = Reversible  
+			  <br>📏 From thalassemia blood test or medical file.
+			</li>
+		  </ul>
+		  
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (required for modal) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
