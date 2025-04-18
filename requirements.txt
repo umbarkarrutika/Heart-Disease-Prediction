@@ -1,0 +1,6 @@
+gunicorn
+scikit-learn
+numpy
+pandas
+joblib
+whitenoise
